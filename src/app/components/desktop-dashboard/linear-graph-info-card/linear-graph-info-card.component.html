@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div style="display: flex;">
+        <div style="flex: 3;">
+          <div class="mat-headline">
+            {{ context.type === 'case' ? 'Cases' : context.type === 'recovered' ? 'Recovered' : 'Deceased' }}
+          </div>
+        </div>
+        <div class="subtle-title" style="flex: 3; text-align: right;">
+          <mat-select (selectionChange)="updateMode($event)" [value]="currentMode">
+            <mat-option *ngFor="let option of modeOptions" [value]="option.value">{{ option.name }}</mat-option>
+          </mat-select>
+        </div>
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle>
+      <div style="display: flex;width: 200px">
+        <div style="flex: 1">since</div>
+        <div style="flex: 2">
+          <mat-select (selectionChange)="updateDuration($event)" [value]="duration">
+            <mat-option *ngFor="let option of durationOptions" [value]="option.value">{{ option.name }}</mat-option>
+          </mat-select>
+        </div>
+        <div style="flex: 1"></div>
+      </div>
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="!noData && graphData?.length && chartType === 'line'" class="graph-container">
+      <canvas baseChart [datasets]="graphData" [labels]="xAxisTicks" [options]="lineChartOptions"
+        [colors]="lineChartColors" [legend]="true" [chartType]="'line'"></canvas>
+    </div>
+    <div *ngIf="!noData && graphData?.length  && chartType === 'bar'" class="graph-container">
+      <canvas baseChart [datasets]="graphData" [labels]="xAxisTicks" [options]="lineChartOptions"
+        [colors]="barChartColors" [legend]="true" [chartType]="'bar'"></canvas>
+    </div>
+    <div class="no-data-label graph-container" *ngIf="noData">
+      <span class="mat-display-3" style="flex: 1">No data</span>
+    </div>
+  </mat-card-content>
+</mat-card>

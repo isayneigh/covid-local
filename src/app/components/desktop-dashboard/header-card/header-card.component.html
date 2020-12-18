@@ -1,0 +1,80 @@
+<mat-card>
+  <mat-card-content>
+    <div class="county-container">
+      <div class="flag-container">
+        <img class="flag" [src]="flagSrc" (load)="getFlagStyle()" />
+      </div>
+      <div class="header-data-title">
+        <div class="mat-display-3">{{data?.name}}</div>
+        <div class="mat-display-1">{{data?.parent?.region === 3 ? '' : data?.parent?.name}}</div>
+      </div>
+      <div class="header-data-container">
+        <div class="header-data-item">
+          <ng-container *ngTemplateOutlet="keyInfo; context: data?.total"></ng-container>
+          <div class="mat-display-1">Total</div>
+        </div>
+        <div class="header-data-item">
+          <ng-container *ngTemplateOutlet="keyInfo; context: data?.active"></ng-container>
+
+          <div class="mat-display-1">Active</div>
+        </div>
+        <div class="header-data-item">
+          <ng-container *ngTemplateOutlet="keyInfo; context: data?.deaths"></ng-container>
+          <div class="mat-display-1">Deceased</div>
+        </div>
+        <div class="header-data-item">
+          <ng-container *ngTemplateOutlet="keyInfo; context: data?.tests"></ng-container>
+          <div class="mat-display-1">Tests</div>
+        </div>
+      </div>
+    </div>
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            View more information
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="header-data-container">
+          <div *ngIf="!isMobile" [ngStyle]="flagStyle"></div>
+          <div style="flex: 1.5"></div>
+          <div class="header-data-item">
+          </div>
+          <div class="header-data-item">
+          </div>
+          <div class="header-data-item">
+            <ng-container *ngTemplateOutlet="keyInfo; context: data?.recovered"></ng-container>
+            <div class="mat-display-1">Recovered</div>
+          </div>
+          <div class="header-data-item">
+            <ng-container *ngTemplateOutlet="keyInfo; context: data?.critical"></ng-container>
+            <div class="mat-display-1">Critical</div>
+          </div>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </mat-card-content>
+</mat-card>
+
+<ng-template #keyInfo let-value="value" let-change="change">
+  <span *ngIf="value" style="cursor: pointer;" #tooltip="matTooltip" [matTooltipHideDelay]="isMobile? 100000: 0"
+    [matTooltipPosition]="'above'" [matTooltip]="value | number"
+    class="mat-display-3">{{ ( value | skyNumeric:numericConfig ) || 'N/A'  }}
+  </span>
+  <div *ngIf="!value" class="mat-display-3">
+    {{ (value | skyNumeric:numericConfig) || 'N/A' }}</div>
+  <span class="mat-body">
+    <span class="upwards" *ngIf="change?.value > 0">
+      <fa-icon style="cursor: pointer;" #tooltip="matTooltip" [matTooltipHideDelay]="isMobile? 100000: 0"
+        [matTooltipPosition]="'above'" [matTooltipTouchGestures]="'on'" [matTooltip]="change?.value | number"
+        [icon]="arrowUp" size="2x"></fa-icon>
+      {{ isMobile? change?.value : '' }}
+    </span>
+    <span class="downwards" *ngIf="change?.value < 0">
+      <fa-icon style="cursor: pointer;" #tooltip="matTooltip" [matTooltipHideDelay]="isMobile? 100000: 0"
+        [matTooltipPosition]="'above'" [matTooltipTouchGestures]="'on'" [matTooltip]="change?.value | number"
+        [icon]="arrowDown" size="2x"></fa-icon>
+      {{ isMobile? change?.value : '' }}
+    </span>
+  </span>
+</ng-template>

@@ -1,0 +1,54 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="mat-headline">
+        Key Info
+      </div>
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <div *ngIf="!wait" class="quick-fact-body">
+      <div class="key-info-container">
+        <div>
+          <div id="total-cases-percent" class="mat-headline">
+            {{  (data?.total?.value / data?.parent?.total?.value)  | percent:'1.1' }}
+            <span></span>
+          </div>
+          <label for="total-cases-percent" class="mat-subheading-1">
+            {{ parentStatisticLabel(data?.parent, 'case') }}
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data?.parent?.parent" class="key-info-container">
+        <div>
+          <div id="total-cases-country-percent" class="mat-headline">
+            {{  (data?.total?.value / data?.parent?.parent?.total?.value)  | percent:'1.3-5' }}
+          </div>
+          <label for="total-cases-country-percent" class="mat-subheading-1">
+            {{ parentStatisticLabel(data?.parent?.parent, 'case') }}
+          </label>
+        </div>
+      </div>
+      <div class="key-info-container">
+        <div>
+          <div id="total-deaths-percent" class="mat-headline">
+            {{  (data?.deaths?.value / data?.parent?.deaths?.value)  | percent:'1.1' }}
+          </div>
+          <label for="total-deaths-percent" class="mat-subheading-1">
+            {{ parentStatisticLabel(data?.parent, 'death') }}
+          </label>
+        </div>
+      </div>
+      <div *ngIf="data?.parent?.parent" class="key-info-container">
+        <div>
+          <div id="total-cases" class="mat-headline">
+            {{  (data?.deaths?.value / data?.parent?.parent?.deaths?.value)   | percent:'1.3-5' }}
+          </div>
+          <label for="total-cases" class="mat-subheading-1">
+            {{ parentStatisticLabel(data?.parent?.parent, 'death') }}
+          </label>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>

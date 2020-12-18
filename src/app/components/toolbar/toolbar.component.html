@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="mat-elevation-z8 sticky">
+  <mat-toolbar-row>
+    <span>
+      <fa-icon class="icon" [icon]="covidIcon" size="lg"></fa-icon>
+    </span>
+    <span class="header-text">
+      <span class="core">COVID-19</span>
+      <span class="script">local</span>
+    </span>
+    <span class="spacing">
+    </span>
+    <div>
+      <button id="region-selector" mat-button [matMenuTriggerFor]="regionMenu">
+        <label for="region-selector" class="mat-caption region-label">Selected region is </label>
+        <span class="region-active-text">
+          {{ enumToRegionMap[region] }}
+        </span>
+      </button>
+    </div>
+    <div>
+      <a class="bmc-button" target="_blank" href="https://www.buymeacoffee.com/isayneigh">
+        <img src="https://cdn.buymeacoffee.com/buttons/bmc-new-btn-logo.svg" alt="Buy me a coffee">
+        <span class="buy-me-text">Buy me a coffee</span>
+      </a>
+    </div>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-menu overlapTrigger="false" #regionMenu="matMenu">
+  <button (click)="updateRegion(3)" mat-menu-item>{{enumToRegionMap[3]}}</button>
+  <button (click)="updateRegion(2)" mat-menu-item>{{enumToRegionMap[2]}}</button>
+  <button (click)="updateRegion(1)" mat-menu-item>{{enumToRegionMap[1]}}</button>
+  <button (click)="updateRegion(0)" mat-menu-item>{{enumToRegionMap[0]}}</button>
+</mat-menu>
+
+<mat-menu #durationMenu="matMenu">
+  <button (click)="updateRegion(3)" mat-menu-item>30 days</button>
+  <button (click)="updateRegion(2)" mat-menu-item>7 days</button>
+  <button (click)="updateRegion(1)" mat-menu-item>All</button>
+  <button (click)="updateRegion(0)" mat-menu-item>Custom range...</button>
+</mat-menu>

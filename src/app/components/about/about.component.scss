@@ -1,0 +1,13 @@
+@import "~@angular/material/_theming";
+@import "../../../styles.scss";
+
+$foreground: map-get($candy-app-theme, foreground);
+
+
+.link {
+  color: mat-color($candy-app-accent);
+}
+
+.container{
+  margin: 10px;
+}

@@ -1,0 +1,20 @@
+<div class="background">
+  <div style="flex: 1;text-align: center;align-self: center;flex-wrap: wrap;">
+    <div>
+      <button class="mat-caption" mat-button (click)="launchAbout()">
+        <fa-icon [icon]="info" size="sm"></fa-icon>
+        About
+      </button>
+      <span>&nbsp;|&nbsp;</span>
+      <button class="mat-caption" mat-button (click)="launchKnownIssues()">
+        <fa-icon [icon]="warning" size="sm"></fa-icon>
+        Known issues
+      </button>
+      <span>&nbsp;|&nbsp;</span>
+      <a href="mailto:covid19localwebsite@gmail.com" target="_blank" class="mat-caption" mat-button>
+        <fa-icon [icon]="report" size="sm"></fa-icon>
+        Report an issue
+      </a>
+    </div>
+  </div>
+</div>

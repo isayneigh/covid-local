@@ -1,0 +1,19 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>
+      <div class="mat-headline">
+        {{ context.type === 'case' ? 'Cases' : 'Deceased' }}
+      </div>
+    </mat-card-title>
+    <mat-card-subtitle>
+      click on legend to filter results
+    </mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <div class="graph-body">
+      <canvas baseChart [data]="pieChartData" [labels]="pieChartLabels" [chartType]="'pie'" [options]="chartOptions"
+        [colors]="pieChartColors" [legend]="true">
+      </canvas>
+    </div>
+  </mat-card-content>
+</mat-card>

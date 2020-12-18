@@ -1,0 +1,102 @@
+@import "~@angular/material/_theming";
+@import "../../../styles.scss";
+
+$foreground: map-get($candy-app-theme, foreground);
+
+.icon {
+  color: #c43837;
+}
+
+.script {
+  color: rgb(196, 56, 55);
+  font-weight: bold;
+}
+
+.core {
+  color: mat-color($foreground, text);
+}
+
+.header-text {
+  font-family: "Open Sans Light";
+  font-size: 30px;
+  margin-left: 5px;
+}
+
+.mat-caption {
+  color: #ffffffa6;
+}
+
+@media only screen and (max-width: 600px) {
+  .script {
+    top: 13px;
+  }
+
+  .buy-me-text {
+    display: none;
+  }
+
+  .region-label {
+    display: none;
+  }
+}
+.sticky {
+  position: sticky;
+  top: 0;
+  z-index: 800 !important;
+}
+
+.spacing {
+  flex: 1 1 auto;
+}
+
+.bmc-button img {
+  height: 29px !important;
+  width: 30px !important;
+  margin-bottom: 1px !important;
+  box-shadow: none !important;
+  border: none !important;
+  vertical-align: middle !important;
+}
+
+.bmc-button {
+  padding: 7px 15px 7px 10px !important;
+  line-height: 35px !important;
+  height: 51px !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  color: mat-color($foreground, text) !important;
+  background-color: #212121 !important;
+  padding: 7px 15px 7px 10px !important;
+  font-family: "Open Sans Light";
+  letter-spacing: -0.08px !important;
+  margin: 0 auto !important;
+  -webkit-box-sizing: border-box !important;
+  box-sizing: border-box !important;
+}
+
+.bmc-button:hover,
+.bmc-button:active,
+.bmc-button:focus {
+  text-decoration: none !important;
+  opacity: 0.85 !important;
+  background-color: #2a2a2a !important;
+}
+
+.buy-me-text,
+.region-active-text {
+  margin-left: 5px;
+  font-size: 20px !important;
+}
+
+.region-active-text {
+  text-decoration: underline;
+  text-decoration-color: mat-color($foreground, text);
+  text-decoration-style: solid;
+  text-decoration-thickness: 0.5px;
+  color: mat-color($foreground, text);
+  font-family: "Open Sans Light";
+}
+
+.mat-toolbar-row {
+  background-color: #212121;
+}

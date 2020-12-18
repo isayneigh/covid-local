@@ -1,0 +1,21 @@
+<div class="spinner">
+  <div style="flex: 3"></div>
+  <div style="flex: 3; align-self: center;text-align: center;">
+    <fa-icon [icon]="dizzy" size="10x"></fa-icon>
+    <div style="margin: 10px;;">
+      <h2 class="mat-h2">
+        Sorry, something went wrong!
+      </h2>
+      <div class="mat-subheading-1">
+        {{ error.message }}
+      </div>
+      <div *ngIf="error.enableReporting">
+        <a [href]="getMailToValue()" mat-button color="warn">
+          <fa-icon [icon]="report" size="sm"></fa-icon>
+          Report
+        </a>
+      </div>
+    </div>
+  </div>
+  <div style="flex: 3"></div>
+</div>

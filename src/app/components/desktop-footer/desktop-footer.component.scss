@@ -1,0 +1,14 @@
+@import "~@angular/material/_theming";
+@import "../../../styles.scss";
+
+$background: map-get($candy-app-theme, background);
+
+.background {
+  background-color: #212121;
+  border-top: #424242 solid 1px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}

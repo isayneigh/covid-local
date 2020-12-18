@@ -1,0 +1,36 @@
+:host {
+  flex-shrink: 1;
+  flex-grow: 4;
+  flex-basis: 32.5%;
+  margin: 5px;
+}
+
+mat-card-header ::ng-deep .mat-card-header-text,
+.mat-card-title {
+  width: 100% !important;
+}
+
+.subtle-title {
+  font-size: medium;
+  font-family: "Open Sans Light";
+  font-weight: 400;
+}
+
+.mat-headline {
+  font-size: xx-large;
+  font-family: "Open Sans Light";
+  font-weight: bold;
+  margin-bottom: 0px;
+}
+.graph-container {
+  height: 300px;
+  position: relative;
+  max-width: 30em;
+  margin: auto;
+}
+.no-data-label {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  margin: auto;
+}
